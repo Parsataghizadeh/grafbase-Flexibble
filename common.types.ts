@@ -9,6 +9,15 @@ export type FormState = {
   category: string;
 };
 
+export type Provider = {
+  id: string;
+  name: string;
+  type: string;
+  signinUrl: string;
+  callbackUrl: string;
+  signinUrlParams?: Record<string, string> | undefined;
+};
+
 export interface ProjectInterface {
   title: string;
   description: string;
@@ -48,7 +57,7 @@ export interface SessionInterface extends Session {
   user: User & {
     id: string;
     name: string;
-    email: string;
+    password: string;
     avatarUrl: string;
   };
 }

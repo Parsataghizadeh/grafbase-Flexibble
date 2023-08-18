@@ -3,9 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavLinks } from "@/constants";
 import AuthProviders from "./AuthProviders";
+import { authOptions } from "@/lib/session";
+import Button from "./Button";
+// import { getCurrentUser } from "@/lib/session";
+import { getServerSession } from "next-auth/next";
 
-const Navbar = () => {
-  const session = null;
+const Navbar = async () => {
+  const session = await getServerSession(authOptions);
+  console.log("🚀 ~ file: Navbar.tsx:13 ~ Navbar ~ session:", session);
 
   return (
     <>
@@ -26,8 +31,10 @@ const Navbar = () => {
         <div className="flex justify-center items-center gap-4">
           {session ? (
             <>
-              UserProfile
-              <Link href="/create-project">Share Work</Link>
+              {/* {session?.user.name} */}
+              {/* <Link href="/create-project">Share Work</Link>
+               */}
+              <p>ok</p>
             </>
           ) : (
             <AuthProviders />
